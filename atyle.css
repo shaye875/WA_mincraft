@@ -20,7 +20,14 @@ body {
 img {
     object-fit: cover;
     width: 3rem;
+
 }
+
+.img:hover{
+    border: solid;
+    width: 92%;
+    height: 92%;
+}  
 
 #img1 {
     position: fixed;
