@@ -1,4 +1,5 @@
 const main = document.getElementById("main")
+main.style.cursor = "auto"
 
 let leaves = 0
 let race = 0
@@ -16,7 +17,7 @@ function inStr(text, str) {
                 }
                 count++
             }
-            if(count2 === text.length){
+            if (count2 === text.length) {
                 return true
             }
         }
@@ -24,6 +25,36 @@ function inStr(text, str) {
     return false
 
 
+}
+
+function corsur() {
+    const collection = document.getElementsByClassName("sucur")
+    console.log(collection);
+    for (let div of collection) {
+
+        div.addEventListener("click", () => {
+            console.log("ok");
+            console.log(inStr("race", div.className));
+            if (inStr("race", div.className)) {
+                localStorage.setItem("bild", "race")
+                main.style.cursor = "url('pictures/img2.jpeg'),auto"
+            }
+            else if (inStr("land", div.className)) {
+                localStorage.setItem("bild", "land")
+                main.style.cursor = "url('pictures/soil.png'),auto"
+            }
+            else if (inStr("leavse", div.className)) {
+                localStorage.setItem("bild", "leavse")
+                main.style.cursor = "url('pictures/img3.jpeg'),auto"
+            }
+            else if (inStr("rocs", div.className)) {
+                localStorage.setItem("bild", "rocs")
+                main.style.cursor = "url('pictures/img4.png'),auto"
+            }
+            localStorage.setItem("click", "")
+        })
+
+    }
 }
 
 function bildFild() {
@@ -58,6 +89,7 @@ function bildFild() {
                     div1.classList.add("land")
                     div1.classList.add("sucur")
                     main.appendChild(div1)
+                    corsur()
                 }
             })
 
@@ -88,6 +120,7 @@ function bildFild() {
                     div1.classList.add("land")
                     div1.classList.add("sucur")
                     main.appendChild(div1)
+                    corsur()
                 }
             })
         }
@@ -98,7 +131,24 @@ function bildFild() {
             let div = document.createElement("div")
             div.appendChild(img)
             div.classList.add("divimg")
+            div.addEventListener("click", () => {
+                console.log(div.childNodes);
+                console.log(div.childNodes.length);
+                if (div.childNodes.length < 1) {
+                    const classs = localStorage.getItem("bild")
+                    console.log(classs);
+                    if (classs && classs === "rocs") {
+                        div.innerHTML = ""
+                        let img = document.createElement("img")
+                        img.src = "pictures/img.png"
+                        console.log(img);
+                        div.appendChild(img)
+                    }
+
+                }
+            })
             main.appendChild(div)
+
             img.addEventListener("click", () => {
                 if (localStorage.getItem("click") === "img3") {
                     div.innerHTML = ""
@@ -117,6 +167,7 @@ function bildFild() {
                     div1.classList.add("rocs")
                     div1.classList.add("sucur")
                     main.appendChild(div1)
+                    corsur()
                 }
             })
         }
@@ -135,6 +186,7 @@ function bildFild() {
             main.appendChild(div)
 
         }
+
     }
 
 }
@@ -173,6 +225,8 @@ function bildtriers() {
                 div1.classList.add("race")
                 div1.classList.add("sucur")
                 main.appendChild(div1)
+                corsur()
+
             }
         })
         let img2 = document.createElement("img")
@@ -200,6 +254,7 @@ function bildtriers() {
                 div1.classList.add("race")
                 div1.classList.add("sucur")
                 main.appendChild(div1)
+                corsur()
             }
         })
         let img3 = document.createElement("img")
@@ -227,6 +282,7 @@ function bildtriers() {
                 div1.classList.add("race")
                 div1.classList.add("sucur")
                 main.appendChild(div1)
+                corsur()
             }
         })
         let img4 = document.createElement("img")
@@ -255,6 +311,7 @@ function bildtriers() {
                 div1.classList.add("race")
                 div1.classList.add("sucur")
                 main.appendChild(div1)
+                corsur()
             }
         })
         for (let j = index2 - 80 - 3; j <= index2 - 80 + 3; j++) {
@@ -281,8 +338,9 @@ function bildtriers() {
                     let number = document.createTextNode(String(leaves))
                     div.appendChild(number)
                     div.classList.add("leavse")
-                    div1.classList.add("sucur")
+                    div.classList.add("sucur")
                     main.appendChild(div)
+                    corsur()
                 }
             })
         }
@@ -310,8 +368,9 @@ function bildtriers() {
                     let number = document.createTextNode(String(leaves))
                     div.appendChild(number)
                     div.classList.add("leavse")
-                    div1.classList.add("sucur")
+                    div.classList.add("sucur")
                     main.appendChild(div)
+                    corsur()
                 }
             })
         }
@@ -341,6 +400,7 @@ function bildtriers() {
                     div.classList.add("leavse")
                     div.classList.add("sucur")
                     main.appendChild(div)
+                    corsur()
                 }
             })
         }
@@ -370,6 +430,7 @@ function bildtriers() {
                     div.classList.add("leavse")
                     div.classList.add("sucur")
                     main.appendChild(div)
+                    corsur()
                 }
             })
         }
@@ -399,6 +460,7 @@ function bildtriers() {
                     div.classList.add("leavse")
                     div.classList.add("sucur")
                     main.appendChild(div)
+                    corsur()
                 }
             })
         }
@@ -428,6 +490,7 @@ function bildtriers() {
                     div.classList.add("leavse")
                     div.classList.add("sucur")
                     main.appendChild(div)
+                    corsur()
 
                 }
             })
@@ -469,24 +532,12 @@ function count() {
     }
 }
 
-function corsur(){
-  const collection = document.getElementsByClassName("sucur")
-  for(let div of collection){
-    console.log(div);
-    div.addEventListener("click",()=>{
-    
-        if(inStr("race",div.className)){
-            main.style.cursor = "url('pictures/img2.jpeg')"
-        }
-    })
-  
-  }
-}
+
 
 bildFild()
 bildtriers()
 onClic()
 count()
-corsur()
+
 
 
