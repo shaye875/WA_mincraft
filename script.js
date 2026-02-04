@@ -419,6 +419,18 @@ function onClic() {
     for (let wapn of garzen) {
         wapn.addEventListener("click", () => {
             localStorage.setItem("click", wapn.id)
+            if (wapn.id === "img1") {
+                main.style.cursor = "url('pictures/ax.ico'),auto"
+            }
+            else if (wapn.id === "img2") {
+                main.style.cursor = "url('pictures/shovel.ico'),auto"
+            }
+            else if (wapn.id === "img3") {
+                main.style.cursor = "url('pictures/pickaxe.ico'),auto"
+            }
+            else if(wapn.id === "img4"){
+                main.style.cursor = "url('pictures/sword (1).ico'),auto"
+            }
         })
     }
 }

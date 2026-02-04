@@ -15,6 +15,7 @@ body {
     font-style: normal;
     font-variation-settings:
         "wdth" 100;
+        cursor: url("pictures/ax.ico"),auto;
 }
 
 img {
@@ -23,11 +24,11 @@ img {
 
 }
 
-.img:hover{
+.img:hover {
     border: solid;
     width: 92%;
     height: 92%;
-}  
+}
 
 #img1 {
     position: fixed;
@@ -69,22 +70,26 @@ a {
     align-items: center;
     justify-content: center;
 }
-.leavse{
-     position: fixed;
+
+.leavse {
+    position: fixed;
     top: 15.3rem;
     left: 1rem;
 }
-.land{
+
+.land {
     position: fixed;
     top: 19.4rem;
     left: 1rem;
 }
-.rocs{
+
+.rocs {
     position: fixed;
     top: 23.4rem;
     left: 1rem;
 }
-.race{
+
+.race {
     position: fixed;
     top: 27.4rem;
     left: 1rem;
