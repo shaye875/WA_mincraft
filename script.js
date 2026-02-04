@@ -1,5 +1,10 @@
 const main = document.getElementById("main")
 
+let leaves = 0
+let race = 0
+let land = 0
+let rocks = 0
+
 function bildFild() {
     let img
     for (let i = 1; i <= 80 * 36; i++) {
@@ -14,13 +19,27 @@ function bildFild() {
             div.appendChild(img)
             div.classList.add("divimg")
             main.appendChild(div)
-            img.addEventListener("click",()=>{
-                if(localStorage.getItem("click") === "img2"){
+            img.addEventListener("click", () => {
+                if (localStorage.getItem("click") === "img2") {
                     div.innerHTML = ""
+                    land += 1
+                    const collection = document.getElementsByClassName("land")
+                    if (collection[0]) {
 
+                        collection[collection.length - 1].innerHTML = ""
+                    }
+                    let img = document.createElement("img")
+                    img.src = "pictures/soil.png"
+                    let div1 = document.createElement("div")
+                    div1.appendChild(img)
+                    let number = document.createTextNode(String(land))
+                    div1.appendChild(number)
+                    div1.classList.add("land")
+                    console.log(div1);
+                    main.appendChild(div1)
                 }
             })
-          
+
         }
         else if (i > 17 * 80 && i <= 21 * 80) {
 
@@ -30,13 +49,27 @@ function bildFild() {
             div.appendChild(img)
             div.classList.add("divimg")
             main.appendChild(div)
-            img.addEventListener("click",()=>{
-                if(localStorage.getItem("click") === "img2"){
+            img.addEventListener("click", () => {
+                if (localStorage.getItem("click") === "img2") {
                     div.innerHTML = ""
+                    land += 1
+                    const collection = document.getElementsByClassName("land")
+                    if (collection[0]) {
 
+                        collection[collection.length - 1].innerHTML = ""
+                    }
+                    let img = document.createElement("img")
+                    img.src = "pictures/soil.png"
+                    let div1 = document.createElement("div")
+                    div1.appendChild(img)
+                    let number = document.createTextNode(String(land))
+                    div1.appendChild(number)
+                    div1.classList.add("land")
+                    console.log(div1);
+                    main.appendChild(div1)
                 }
             })
-        }   
+        }
         else if (i > 21 * 80 && i <= 34 * 80) {
 
             img.setAttribute("src", "pictures/img.png")
@@ -45,10 +78,24 @@ function bildFild() {
             div.appendChild(img)
             div.classList.add("divimg")
             main.appendChild(div)
-            img.addEventListener("click",()=>{
-                if(localStorage.getItem("click") === "img3"){
+            img.addEventListener("click", () => {
+                if (localStorage.getItem("click") === "img3") {
                     div.innerHTML = ""
+                    rocks += 1
+                    const collection = document.getElementsByClassName("rocs")
+                    if (collection[0]) {
 
+                        collection[collection.length - 1].innerHTML = ""
+                    }
+                    let img = document.createElement("img")
+                    img.src = "pictures/img.png"
+                    let div1 = document.createElement("div")
+                    div1.appendChild(img)
+                    let number = document.createTextNode(String(rocks))
+                    div1.appendChild(number)
+                    div1.classList.add("rocs")
+                    console.log(div1);
+                    main.appendChild(div1)
                 }
             })
         }
@@ -60,15 +107,15 @@ function bildFild() {
             div.appendChild(img)
             div.classList.add("divimg")
             main.appendChild(div)
-        }else{
+        } else {
             let div = document.createElement("div")
             div.appendChild(img)
             div.classList.add("divimg")
             main.appendChild(div)
-        
+
         }
-        }
-      
+    }
+
 }
 
 function bildtriers() {
@@ -87,10 +134,24 @@ function bildtriers() {
 
         header[index].innerHTML = ""
         header[index].appendChild(img)
-        img.addEventListener("click",()=>{
-            if(localStorage.getItem("click") === "img1"){
+        img.addEventListener("click", () => {
+            if (localStorage.getItem("click") === "img1") {
                 header[index].innerHTML = ""
+                race += 1
+                const collection = document.getElementsByClassName("race")
+                if (collection[0]) {
 
+                    collection[collection.length - 1].innerHTML = ""
+                }
+                let img = document.createElement("img")
+                img.src = "pictures/img2.jpeg"
+                let div1 = document.createElement("div")
+                div1.appendChild(img)
+                let number = document.createTextNode(String(race))
+                div1.appendChild(number)
+                div1.classList.add("race")
+                console.log(div1);
+                main.appendChild(div1)
             }
         })
         let img2 = document.createElement("img")
@@ -100,10 +161,24 @@ function bildtriers() {
         img2.classList.add("font")
         header[index - 80].innerHTML = ""
         header[index - 80].appendChild(img2)
-        img2.addEventListener("click",()=>{
-            if(localStorage.getItem("click") === "img1"){
-                header[index-80].innerHTML = ""
+        img2.addEventListener("click", () => {
+            if (localStorage.getItem("click") === "img1") {
+                header[index - 80].innerHTML = ""
+                race += 1
+                const collection = document.getElementsByClassName("race")
+                if (collection[0]) {
 
+                    collection[collection.length - 1].innerHTML = ""
+                }
+                let img = document.createElement("img")
+                img.src = "pictures/img2.jpeg"
+                let div1 = document.createElement("div")
+                div1.appendChild(img)
+                let number = document.createTextNode(String(race))
+                div1.appendChild(number)
+                div1.classList.add("race")
+                console.log(div1);
+                main.appendChild(div1)
             }
         })
         let img3 = document.createElement("img")
@@ -113,10 +188,24 @@ function bildtriers() {
         img3.classList.add("font")
         header[index - 80 - 80].innerHTML = ""
         header[index - 80 - 80].appendChild(img3)
-        img3.addEventListener("click",()=>{
-            if(localStorage.getItem("click") === "img1"){
-                header[index-80-80].innerHTML = ""
+        img3.addEventListener("click", () => {
+            if (localStorage.getItem("click") === "img1") {
+                header[index - 80 - 80].innerHTML = ""
+                race += 1
+                const collection = document.getElementsByClassName("race")
+                if (collection[0]) {
 
+                    collection[collection.length - 1].innerHTML = ""
+                }
+                let img = document.createElement("img")
+                img.src = "pictures/img2.jpeg"
+                let div1 = document.createElement("div")
+                div1.appendChild(img)
+                let number = document.createTextNode(String(race))
+                div1.appendChild(number)
+                div1.classList.add("race")
+                console.log(div1);
+                main.appendChild(div1)
             }
         })
         let img4 = document.createElement("img")
@@ -127,10 +216,24 @@ function bildtriers() {
         let index2 = index - 80 - 80 - 80
         header[index2].innerHTML = ""
         header[index2].appendChild(img4)
-        img4.addEventListener("click",()=>{
-            if(localStorage.getItem("click") === "img1"){
+        img4.addEventListener("click", () => {
+            if (localStorage.getItem("click") === "img1") {
                 header[index2].innerHTML = ""
+                race += 1
+                const collection = document.getElementsByClassName("race")
+                if (collection[0]) {
 
+                    collection[collection.length - 1].innerHTML = ""
+                }
+                let img = document.createElement("img")
+                img.src = "pictures/img2.jpeg"
+                let div1 = document.createElement("div")
+                div1.appendChild(img)
+                let number = document.createTextNode(String(race))
+                div1.appendChild(number)
+                div1.classList.add("race")
+                console.log(div1);
+                main.appendChild(div1)
             }
         })
         for (let j = index2 - 80 - 3; j <= index2 - 80 + 3; j++) {
@@ -141,14 +244,28 @@ function bildtriers() {
             img5.classList.add("font")
             header[j].innerHTML = ""
             header[j].appendChild(img5)
-            img5.addEventListener("click",()=>{
-                if(localStorage.getItem("click") === "img4"){
+            img5.addEventListener("click", () => {
+                if (localStorage.getItem("click") === "img4") {
                     header[j].innerHTML = ""
-    
+                    leaves += 1
+                    const collection = document.getElementsByClassName("leavse")
+                    if (collection[0]) {
+
+                        collection[collection.length - 1].innerHTML = ""
+                    }
+                    let img = document.createElement("img")
+                    img.src = "pictures/img3.jpeg"
+                    let div = document.createElement("div")
+                    div.appendChild(img)
+                    let number = document.createTextNode(String(leaves))
+                    div.appendChild(number)
+                    div.classList.add("leavse")
+                    console.log(div);
+                    main.appendChild(div)
                 }
             })
         }
-        for(let k = index2 - 80-80 - 3; k <= index2 - 80-80 + 3;k++){
+        for (let k = index2 - 80 - 80 - 3; k <= index2 - 80 - 80 + 3; k++) {
             let img6 = document.createElement("img")
             img6.classList.add("img")
             img6.setAttribute("alt", "")
@@ -156,14 +273,28 @@ function bildtriers() {
             img6.classList.add("font")
             header[k].innerHTML = ""
             header[k].appendChild(img6)
-            img6.addEventListener("click",()=>{
-                if(localStorage.getItem("click") === "img4"){
+            img6.addEventListener("click", () => {
+                if (localStorage.getItem("click") === "img4") {
                     header[k].innerHTML = ""
-    
+                    leaves += 1
+                    const collection = document.getElementsByClassName("leavse")
+                    if (collection[0]) {
+
+                        collection[collection.length - 1].innerHTML = ""
+                    }
+                    let img = document.createElement("img")
+                    img.src = "pictures/img3.jpeg"
+                    let div = document.createElement("div")
+                    div.appendChild(img)
+                    let number = document.createTextNode(String(leaves))
+                    div.appendChild(number)
+                    div.classList.add("leavse")
+                    console.log(div);
+                    main.appendChild(div)
                 }
             })
         }
-        for(let l = index2 - 80-80-80 - 2;l <= index2 - 80-80-80 + 2;l++){
+        for (let l = index2 - 80 - 80 - 80 - 2; l <= index2 - 80 - 80 - 80 + 2; l++) {
             let img7 = document.createElement("img")
             img7.classList.add("img")
             img7.setAttribute("alt", "")
@@ -171,14 +302,28 @@ function bildtriers() {
             img7.classList.add("font")
             header[l].innerHTML = ""
             header[l].appendChild(img7)
-            img7.addEventListener("click",()=>{
-                if(localStorage.getItem("click") === "img4"){
+            img7.addEventListener("click", () => {
+                if (localStorage.getItem("click") === "img4") {
                     header[l].innerHTML = ""
-    
+                    leaves += 1
+                    const collection = document.getElementsByClassName("leavse")
+                    if (collection[0]) {
+
+                        collection[collection.length - 1].innerHTML = ""
+                    }
+                    let img = document.createElement("img")
+                    img.src = "pictures/img3.jpeg"
+                    let div = document.createElement("div")
+                    div.appendChild(img)
+                    let number = document.createTextNode(String(leaves))
+                    div.appendChild(number)
+                    div.classList.add("leavse")
+                    console.log(div);
+                    main.appendChild(div)
                 }
             })
         }
-        for(let p = index2 - 80-80-80-80 - 2;p <= index2 - 80-80-80-80 + 2;p++){
+        for (let p = index2 - 80 - 80 - 80 - 80 - 2; p <= index2 - 80 - 80 - 80 - 80 + 2; p++) {
             let img8 = document.createElement("img")
             img8.classList.add("img")
             img8.setAttribute("alt", "")
@@ -186,14 +331,28 @@ function bildtriers() {
             img8.classList.add("font")
             header[p].innerHTML = ""
             header[p].appendChild(img8)
-            img8.addEventListener("click",()=>{
-                if(localStorage.getItem("click") === "img4"){
+            img8.addEventListener("click", () => {
+                if (localStorage.getItem("click") === "img4") {
                     header[p].innerHTML = ""
-    
+                    leaves += 1
+                    const collection = document.getElementsByClassName("leavse")
+                    if (collection[0]) {
+
+                        collection[collection.length - 1].innerHTML = ""
+                    }
+                    let img = document.createElement("img")
+                    img.src = "pictures/img3.jpeg"
+                    let div = document.createElement("div")
+                    div.appendChild(img)
+                    let number = document.createTextNode(String(leaves))
+                    div.appendChild(number)
+                    div.classList.add("leavse")
+                    console.log(div);
+                    main.appendChild(div)
                 }
             })
         }
-        for(let u = index2 - 80-80-80-80-80 - 1;u <= index2 - 80-80-80-80-80 + 1;u++){
+        for (let u = index2 - 80 - 80 - 80 - 80 - 80 - 1; u <= index2 - 80 - 80 - 80 - 80 - 80 + 1; u++) {
             let img9 = document.createElement("img")
             img9.classList.add("img")
             img9.setAttribute("alt", "")
@@ -201,14 +360,28 @@ function bildtriers() {
             img9.classList.add("font")
             header[u].innerHTML = ""
             header[u].appendChild(img9)
-            img9.addEventListener("click",()=>{
-                if(localStorage.getItem("click") === "img4"){
+            img9.addEventListener("click", () => {
+                if (localStorage.getItem("click") === "img4") {
                     header[u].innerHTML = ""
-    
+                    leaves += 1
+                    const collection = document.getElementsByClassName("leavse")
+                    if (collection[0]) {
+
+                        collection[collection.length - 1].innerHTML = ""
+                    }
+                    let img = document.createElement("img")
+                    img.src = "pictures/img3.jpeg"
+                    let div = document.createElement("div")
+                    div.appendChild(img)
+                    let number = document.createTextNode(String(leaves))
+                    div.appendChild(number)
+                    div.classList.add("leavse")
+                    console.log(div);
+                    main.appendChild(div)
                 }
             })
         }
-        for(let r = index2 - 80-80-80-80-80-80 - 1;r <= index2 - 80-80-80-80-80-80 + 1;r++){
+        for (let r = index2 - 80 - 80 - 80 - 80 - 80 - 80 - 1; r <= index2 - 80 - 80 - 80 - 80 - 80 - 80 + 1; r++) {
             let img0 = document.createElement("img")
             img0.classList.add("img")
             img0.setAttribute("alt", "")
@@ -216,27 +389,56 @@ function bildtriers() {
             img0.classList.add("font")
             header[r].innerHTML = ""
             header[r].appendChild(img0)
-            img0.addEventListener("click",()=>{
-                if(localStorage.getItem("click") === "img4"){
+            img0.addEventListener("click", () => {
+                if (localStorage.getItem("click") === "img4") {
                     header[r].innerHTML = ""
-    
+                    leaves += 1
+                    const collection = document.getElementsByClassName("leavse")
+                    if (collection[0]) {
+
+                        collection[collection.length - 1].innerHTML = ""
+                    }
+                    let img = document.createElement("img")
+                    img.src = "pictures/img3.jpeg"
+                    let div = document.createElement("div")
+                    div.appendChild(img)
+                    let number = document.createTextNode(String(leaves))
+                    div.appendChild(number)
+                    div.classList.add("leavse")
+                    console.log(div);
+                    main.appendChild(div)
+
                 }
             })
         }
     }
 }
 
-function onClic(){
+function onClic() {
     const garzen = document.getElementsByClassName("wapn")
-    for(let wapn of garzen){
-        wapn.addEventListener("click",()=>{
-            localStorage.setItem("click",wapn.id)
+    for (let wapn of garzen) {
+        wapn.addEventListener("click", () => {
+            localStorage.setItem("click", wapn.id)
         })
     }
-  
-    
+}
+
+function count() {
+    console.log(leaves);
+
+    if (leaves > 0) {
+        let img = document.createElement("img")
+        img.src = "pictures/img3.jpeg"
+        img.classList.add("font")
+        let div = document.createElement("div")
+        div.appendChild(img)
+        div.classList.add("leavse")
+    }
 }
 
 bildFild()
 bildtriers()
 onClic()
+count()
+
+

@@ -69,3 +69,23 @@ a {
     align-items: center;
     justify-content: center;
 }
+.leavse{
+     position: fixed;
+    top: 15.3rem;
+    left: 1rem;
+}
+.land{
+    position: fixed;
+    top: 19.4rem;
+    left: 1rem;
+}
+.rocs{
+    position: fixed;
+    top: 23.4rem;
+    left: 1rem;
+}
+.race{
+    position: fixed;
+    top: 27.4rem;
+    left: 1rem;
+}
