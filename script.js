@@ -5,6 +5,27 @@ let race = 0
 let land = 0
 let rocks = 0
 
+function inStr(text, str) {
+    for (let j = 0; j < str.length; j++) {
+        let count = j
+        let count2 = 0
+        if (text[0] === str[j] && (str.length - j) >= text.length) {
+            for (let t of text) {
+                if (t === str[count]) {
+                    count2++
+                }
+                count++
+            }
+            if(count2 === text.length){
+                return true
+            }
+        }
+    }
+    return false
+
+
+}
+
 function bildFild() {
     let img
     for (let i = 1; i <= 80 * 36; i++) {
@@ -35,7 +56,7 @@ function bildFild() {
                     let number = document.createTextNode(String(land))
                     div1.appendChild(number)
                     div1.classList.add("land")
-                    console.log(div1);
+                    div1.classList.add("sucur")
                     main.appendChild(div1)
                 }
             })
@@ -65,7 +86,7 @@ function bildFild() {
                     let number = document.createTextNode(String(land))
                     div1.appendChild(number)
                     div1.classList.add("land")
-                    console.log(div1);
+                    div1.classList.add("sucur")
                     main.appendChild(div1)
                 }
             })
@@ -94,7 +115,7 @@ function bildFild() {
                     let number = document.createTextNode(String(rocks))
                     div1.appendChild(number)
                     div1.classList.add("rocs")
-                    console.log(div1);
+                    div1.classList.add("sucur")
                     main.appendChild(div1)
                 }
             })
@@ -150,7 +171,7 @@ function bildtriers() {
                 let number = document.createTextNode(String(race))
                 div1.appendChild(number)
                 div1.classList.add("race")
-                console.log(div1);
+                div1.classList.add("sucur")
                 main.appendChild(div1)
             }
         })
@@ -177,7 +198,7 @@ function bildtriers() {
                 let number = document.createTextNode(String(race))
                 div1.appendChild(number)
                 div1.classList.add("race")
-                console.log(div1);
+                div1.classList.add("sucur")
                 main.appendChild(div1)
             }
         })
@@ -204,7 +225,7 @@ function bildtriers() {
                 let number = document.createTextNode(String(race))
                 div1.appendChild(number)
                 div1.classList.add("race")
-                console.log(div1);
+                div1.classList.add("sucur")
                 main.appendChild(div1)
             }
         })
@@ -232,7 +253,7 @@ function bildtriers() {
                 let number = document.createTextNode(String(race))
                 div1.appendChild(number)
                 div1.classList.add("race")
-                console.log(div1);
+                div1.classList.add("sucur")
                 main.appendChild(div1)
             }
         })
@@ -260,7 +281,7 @@ function bildtriers() {
                     let number = document.createTextNode(String(leaves))
                     div.appendChild(number)
                     div.classList.add("leavse")
-                    console.log(div);
+                    div1.classList.add("sucur")
                     main.appendChild(div)
                 }
             })
@@ -289,7 +310,7 @@ function bildtriers() {
                     let number = document.createTextNode(String(leaves))
                     div.appendChild(number)
                     div.classList.add("leavse")
-                    console.log(div);
+                    div1.classList.add("sucur")
                     main.appendChild(div)
                 }
             })
@@ -318,7 +339,7 @@ function bildtriers() {
                     let number = document.createTextNode(String(leaves))
                     div.appendChild(number)
                     div.classList.add("leavse")
-                    console.log(div);
+                    div.classList.add("sucur")
                     main.appendChild(div)
                 }
             })
@@ -347,7 +368,7 @@ function bildtriers() {
                     let number = document.createTextNode(String(leaves))
                     div.appendChild(number)
                     div.classList.add("leavse")
-                    console.log(div);
+                    div.classList.add("sucur")
                     main.appendChild(div)
                 }
             })
@@ -376,7 +397,7 @@ function bildtriers() {
                     let number = document.createTextNode(String(leaves))
                     div.appendChild(number)
                     div.classList.add("leavse")
-                    console.log(div);
+                    div.classList.add("sucur")
                     main.appendChild(div)
                 }
             })
@@ -405,7 +426,7 @@ function bildtriers() {
                     let number = document.createTextNode(String(leaves))
                     div.appendChild(number)
                     div.classList.add("leavse")
-                    console.log(div);
+                    div.classList.add("sucur")
                     main.appendChild(div)
 
                 }
@@ -428,7 +449,7 @@ function onClic() {
             else if (wapn.id === "img3") {
                 main.style.cursor = "url('pictures/pickaxe.ico'),auto"
             }
-            else if(wapn.id === "img4"){
+            else if (wapn.id === "img4") {
                 main.style.cursor = "url('pictures/sword (1).ico'),auto"
             }
         })
@@ -448,9 +469,24 @@ function count() {
     }
 }
 
+function corsur(){
+  const collection = document.getElementsByClassName("sucur")
+  for(let div of collection){
+    console.log(div);
+    div.addEventListener("click",()=>{
+    
+        if(inStr("race",div.className)){
+            main.style.cursor = "url('pictures/img2.jpeg')"
+        }
+    })
+  
+  }
+}
+
 bildFild()
 bildtriers()
 onClic()
 count()
+corsur()
 
 
