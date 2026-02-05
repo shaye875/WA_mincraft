@@ -1,10 +1,7 @@
 const main = document.getElementById("main")
 main.style.cursor = "auto"
 
-let leaves = 0
-let race = 0
-let land = 0
-let rocks = 0
+const obj = { leaves: 0, race: 0, land: 0, rocks: 0 }
 
 function inStr(text, str) {
     for (let j = 0; j < str.length; j++) {
@@ -23,8 +20,6 @@ function inStr(text, str) {
         }
     }
     return false
-
-
 }
 
 function corsur() {
@@ -33,7 +28,6 @@ function corsur() {
     for (let div of collection) {
 
         div.addEventListener("click", () => {
-            console.log("ok");
             console.log(inStr("race", div.className));
             if (inStr("race", div.className)) {
                 localStorage.setItem("bild", "race")
@@ -57,34 +51,45 @@ function corsur() {
     }
 }
 
-function bildFild() {
+function bildFild(obj) {
     let img
     for (let i = 1; i <= 80 * 36; i++) {
         img = document.createElement("img")
         img.classList.add("img")
         img.setAttribute("alt", "")
+        let div = document.createElement("div")
+        div.classList.add("divimg")
         if (i > 16 * 80 && i <= 17 * 80) {
-
             img.setAttribute("src", "pictures/download4.png")
             img.classList.add("font")
-            let div = document.createElement("div")
             div.appendChild(img)
-            div.classList.add("divimg")
+            div.addEventListener("click", () => {
+                if (div.childNodes.length < 1) {
+                    const classs = localStorage.getItem("bild")
+                    if (classs && classs === "land" && obj.land > 0) {
+                        div.innerHTML = ""
+                        let img = document.createElement("img")
+                        img.src = "pictures/soil.png"
+                        img.classList.add("font")
+                        obj.land -= 1
+                        div.appendChild(img)
+                    }
+                }
+            })
             main.appendChild(div)
-            img.addEventListener("click", () => {
+            div.addEventListener("click", () => {
                 if (localStorage.getItem("click") === "img2") {
                     div.innerHTML = ""
-                    land += 1
+                    obj.land += 1
                     const collection = document.getElementsByClassName("land")
                     if (collection[0]) {
-
                         collection[collection.length - 1].innerHTML = ""
                     }
                     let img = document.createElement("img")
                     img.src = "pictures/soil.png"
                     let div1 = document.createElement("div")
                     div1.appendChild(img)
-                    let number = document.createTextNode(String(land))
+                    let number = document.createTextNode(String(obj.land))
                     div1.appendChild(number)
                     div1.classList.add("land")
                     div1.classList.add("sucur")
@@ -95,17 +100,28 @@ function bildFild() {
 
         }
         else if (i > 17 * 80 && i <= 21 * 80) {
-
             img.setAttribute("src", "pictures/soil.png")
             img.classList.add("font")
-            let div = document.createElement("div")
             div.appendChild(img)
-            div.classList.add("divimg")
+            div.addEventListener("click", () => {
+                if (div.childNodes.length < 1) {
+                    const classs = localStorage.getItem("bild")
+                    if (classs && classs === "land" && obj.land) {
+                        div.innerHTML = ""
+                        let img = document.createElement("img")
+                        img.src = "pictures/soil.png"
+                        img.classList.add("font")
+                        obj.land -= 1
+                        div.appendChild(img)
+                    }
+
+                }
+            })
             main.appendChild(div)
-            img.addEventListener("click", () => {
+            div.addEventListener("click", () => {
                 if (localStorage.getItem("click") === "img2") {
                     div.innerHTML = ""
-                    land += 1
+                    obj.land += 1
                     const collection = document.getElementsByClassName("land")
                     if (collection[0]) {
 
@@ -115,7 +131,7 @@ function bildFild() {
                     img.src = "pictures/soil.png"
                     let div1 = document.createElement("div")
                     div1.appendChild(img)
-                    let number = document.createTextNode(String(land))
+                    let number = document.createTextNode(String(obj.land))
                     div1.appendChild(number)
                     div1.classList.add("land")
                     div1.classList.add("sucur")
@@ -125,44 +141,37 @@ function bildFild() {
             })
         }
         else if (i > 21 * 80 && i <= 34 * 80) {
-
             img.setAttribute("src", "pictures/img.png")
             img.classList.add("font")
-            let div = document.createElement("div")
             div.appendChild(img)
-            div.classList.add("divimg")
             div.addEventListener("click", () => {
-                console.log(div.childNodes);
-                console.log(div.childNodes.length);
                 if (div.childNodes.length < 1) {
                     const classs = localStorage.getItem("bild")
-                    console.log(classs);
                     if (classs && classs === "rocs") {
                         div.innerHTML = ""
                         let img = document.createElement("img")
                         img.src = "pictures/img.png"
-                        console.log(img);
+                        img.classList.add("font")
+                        obj.rocks -= 1
                         div.appendChild(img)
                     }
 
                 }
             })
             main.appendChild(div)
-
-            img.addEventListener("click", () => {
+            div.addEventListener("click", () => {
                 if (localStorage.getItem("click") === "img3") {
                     div.innerHTML = ""
-                    rocks += 1
+                    obj.rocks += 1
                     const collection = document.getElementsByClassName("rocs")
                     if (collection[0]) {
-
                         collection[collection.length - 1].innerHTML = ""
                     }
                     let img = document.createElement("img")
                     img.src = "pictures/img.png"
                     let div1 = document.createElement("div")
                     div1.appendChild(img)
-                    let number = document.createTextNode(String(rocks))
+                    let number = document.createTextNode(String(obj.rocks))
                     div1.appendChild(number)
                     div1.classList.add("rocs")
                     div1.classList.add("sucur")
@@ -172,12 +181,9 @@ function bildFild() {
             })
         }
         else if (i > 34 * 80) {
-
             img.setAttribute("src", "pictures/download5.png")
             img.classList.add("font")
-            let div = document.createElement("div")
             div.appendChild(img)
-            div.classList.add("divimg")
             main.appendChild(div)
         } else {
             let div = document.createElement("div")
@@ -191,11 +197,34 @@ function bildFild() {
 
 }
 
-function bildtriers() {
+function bildtriers(obj) {
     const images = document.getElementsByClassName("divimg")
     const header = []
     for (let i = 0; i <= 16 * 80 - 1; i++) {
+        images[i].innerHTML = ""
         header.push(images[i])
+        images[i].addEventListener("click", () => {
+            if (images[i].childNodes.length < 1) {
+                console.log("ll");
+                const classs = localStorage.getItem("bild")
+                if (classs && classs === "leavse" && obj.leaves > 0) {
+                    images[i].innerHTML = ""
+                    let img = document.createElement("img")
+                    img.src = "pictures/img3.jpeg"
+                    img.classList.add("font")
+                    obj.leaves -= 1
+                    images[i].appendChild(img)
+                } else if (classs && classs === "race" && obj.race > 0) {
+                    images[i].innerHTML = ""
+                    let img = document.createElement("img")
+                    img.src = "pictures/img2.jpeg"
+                    img.classList.add("font")
+                    obj.race -= 1
+                    images[i].appendChild(img)
+                }
+
+            }
+        })
     }
     for (let i = 1; i <= 8; i++) {
         const index = Math.floor(Math.random() * 80) + 1 + 80 * 15
@@ -210,7 +239,7 @@ function bildtriers() {
         img.addEventListener("click", () => {
             if (localStorage.getItem("click") === "img1") {
                 header[index].innerHTML = ""
-                race += 1
+                obj.race += 1
                 const collection = document.getElementsByClassName("race")
                 if (collection[0]) {
 
@@ -220,7 +249,7 @@ function bildtriers() {
                 img.src = "pictures/img2.jpeg"
                 let div1 = document.createElement("div")
                 div1.appendChild(img)
-                let number = document.createTextNode(String(race))
+                let number = document.createTextNode(String(obj.race))
                 div1.appendChild(number)
                 div1.classList.add("race")
                 div1.classList.add("sucur")
@@ -239,7 +268,7 @@ function bildtriers() {
         img2.addEventListener("click", () => {
             if (localStorage.getItem("click") === "img1") {
                 header[index - 80].innerHTML = ""
-                race += 1
+                obj.race += 1
                 const collection = document.getElementsByClassName("race")
                 if (collection[0]) {
 
@@ -249,7 +278,7 @@ function bildtriers() {
                 img.src = "pictures/img2.jpeg"
                 let div1 = document.createElement("div")
                 div1.appendChild(img)
-                let number = document.createTextNode(String(race))
+                let number = document.createTextNode(String(obj.race))
                 div1.appendChild(number)
                 div1.classList.add("race")
                 div1.classList.add("sucur")
@@ -267,7 +296,7 @@ function bildtriers() {
         img3.addEventListener("click", () => {
             if (localStorage.getItem("click") === "img1") {
                 header[index - 80 - 80].innerHTML = ""
-                race += 1
+                obj.race += 1
                 const collection = document.getElementsByClassName("race")
                 if (collection[0]) {
 
@@ -277,7 +306,7 @@ function bildtriers() {
                 img.src = "pictures/img2.jpeg"
                 let div1 = document.createElement("div")
                 div1.appendChild(img)
-                let number = document.createTextNode(String(race))
+                let number = document.createTextNode(String(obj.race))
                 div1.appendChild(number)
                 div1.classList.add("race")
                 div1.classList.add("sucur")
@@ -296,7 +325,7 @@ function bildtriers() {
         img4.addEventListener("click", () => {
             if (localStorage.getItem("click") === "img1") {
                 header[index2].innerHTML = ""
-                race += 1
+                obj.race += 1
                 const collection = document.getElementsByClassName("race")
                 if (collection[0]) {
 
@@ -306,7 +335,7 @@ function bildtriers() {
                 img.src = "pictures/img2.jpeg"
                 let div1 = document.createElement("div")
                 div1.appendChild(img)
-                let number = document.createTextNode(String(race))
+                let number = document.createTextNode(String(obj.race))
                 div1.appendChild(number)
                 div1.classList.add("race")
                 div1.classList.add("sucur")
@@ -325,7 +354,7 @@ function bildtriers() {
             img5.addEventListener("click", () => {
                 if (localStorage.getItem("click") === "img4") {
                     header[j].innerHTML = ""
-                    leaves += 1
+                    obj.leaves += 1
                     const collection = document.getElementsByClassName("leavse")
                     if (collection[0]) {
 
@@ -335,7 +364,7 @@ function bildtriers() {
                     img.src = "pictures/img3.jpeg"
                     let div = document.createElement("div")
                     div.appendChild(img)
-                    let number = document.createTextNode(String(leaves))
+                    let number = document.createTextNode(String(obj.leaves))
                     div.appendChild(number)
                     div.classList.add("leavse")
                     div.classList.add("sucur")
@@ -355,7 +384,7 @@ function bildtriers() {
             img6.addEventListener("click", () => {
                 if (localStorage.getItem("click") === "img4") {
                     header[k].innerHTML = ""
-                    leaves += 1
+                    obj.leaves += 1
                     const collection = document.getElementsByClassName("leavse")
                     if (collection[0]) {
 
@@ -365,7 +394,7 @@ function bildtriers() {
                     img.src = "pictures/img3.jpeg"
                     let div = document.createElement("div")
                     div.appendChild(img)
-                    let number = document.createTextNode(String(leaves))
+                    let number = document.createTextNode(String(obj.leaves))
                     div.appendChild(number)
                     div.classList.add("leavse")
                     div.classList.add("sucur")
@@ -385,7 +414,7 @@ function bildtriers() {
             img7.addEventListener("click", () => {
                 if (localStorage.getItem("click") === "img4") {
                     header[l].innerHTML = ""
-                    leaves += 1
+                    obj.leaves += 1
                     const collection = document.getElementsByClassName("leavse")
                     if (collection[0]) {
 
@@ -395,7 +424,7 @@ function bildtriers() {
                     img.src = "pictures/img3.jpeg"
                     let div = document.createElement("div")
                     div.appendChild(img)
-                    let number = document.createTextNode(String(leaves))
+                    let number = document.createTextNode(String(obj.leaves))
                     div.appendChild(number)
                     div.classList.add("leavse")
                     div.classList.add("sucur")
@@ -415,7 +444,7 @@ function bildtriers() {
             img8.addEventListener("click", () => {
                 if (localStorage.getItem("click") === "img4") {
                     header[p].innerHTML = ""
-                    leaves += 1
+                    obj.leaves += 1
                     const collection = document.getElementsByClassName("leavse")
                     if (collection[0]) {
 
@@ -425,7 +454,7 @@ function bildtriers() {
                     img.src = "pictures/img3.jpeg"
                     let div = document.createElement("div")
                     div.appendChild(img)
-                    let number = document.createTextNode(String(leaves))
+                    let number = document.createTextNode(String(obj.leaves))
                     div.appendChild(number)
                     div.classList.add("leavse")
                     div.classList.add("sucur")
@@ -445,7 +474,7 @@ function bildtriers() {
             img9.addEventListener("click", () => {
                 if (localStorage.getItem("click") === "img4") {
                     header[u].innerHTML = ""
-                    leaves += 1
+                    obj.leaves += 1
                     const collection = document.getElementsByClassName("leavse")
                     if (collection[0]) {
 
@@ -455,7 +484,7 @@ function bildtriers() {
                     img.src = "pictures/img3.jpeg"
                     let div = document.createElement("div")
                     div.appendChild(img)
-                    let number = document.createTextNode(String(leaves))
+                    let number = document.createTextNode(String(obj.leaves))
                     div.appendChild(number)
                     div.classList.add("leavse")
                     div.classList.add("sucur")
@@ -475,7 +504,7 @@ function bildtriers() {
             img0.addEventListener("click", () => {
                 if (localStorage.getItem("click") === "img4") {
                     header[r].innerHTML = ""
-                    leaves += 1
+                    obj.leaves += 1
                     const collection = document.getElementsByClassName("leavse")
                     if (collection[0]) {
 
@@ -485,7 +514,7 @@ function bildtriers() {
                     img.src = "pictures/img3.jpeg"
                     let div = document.createElement("div")
                     div.appendChild(img)
-                    let number = document.createTextNode(String(leaves))
+                    let number = document.createTextNode(String(obj.leaves))
                     div.appendChild(number)
                     div.classList.add("leavse")
                     div.classList.add("sucur")
@@ -515,6 +544,7 @@ function onClic() {
             else if (wapn.id === "img4") {
                 main.style.cursor = "url('pictures/sword (1).ico'),auto"
             }
+            localStorage.setItem("bild", "")
         })
     }
 }
@@ -534,8 +564,8 @@ function count() {
 
 
 
-bildFild()
-bildtriers()
+bildFild(obj)
+bildtriers(obj)
 onClic()
 count()
 
